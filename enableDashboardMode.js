@@ -1,19 +1,23 @@
 function applyForElement(el, applyFn) {
-    console.log(el);
     const element = NodeList.prototype.isPrototypeOf(el) || HTMLCollection.prototype.isPrototypeOf(el) ? el[0] : el;
-    console.log(element);
     if (element) {
         applyFn(element);
     }
 }
 
-function hideKibanaUI() {
+function hideKibana5UI() {
     applyForElement(document.getElementsByClassName('global-nav'), (e) => e.style.display = 'none');
     applyForElement(document.getElementsByClassName('app-wrapper'), (e) => e.style.left = 0);
     applyForElement(document.getElementsByName('discover'), (e) => e.style.display = 'none');
     applyForElement(document.getElementsByName('discover-search'), (e) => e.style.display = 'none');
     applyForElement(document.getElementsByName('dashboard'), (e) => e.style.display = 'none');
     applyForElement(document.getElementsByName('dashboard-search'), (e) => e.style.display = 'none');
+}
+
+function hideKibana7UI() {
+    applyForElement(document.getElementsByClassName('euiNavDrawer'), (e) => e.style.display = 'none');
+    applyForElement(document.getElementsByClassName('euiHeader'), (e) => e.style.display = 'none');
+    applyForElement(document.getElementsByClassName('app-wrapper'), (e) => e.style.top = 0);
 }
 
 function hideJiraUI() {
@@ -37,7 +41,8 @@ function enableFullScreen() {
 }
 
 (function() {
-    hideKibanaUI();
+    hideKibana5UI();
+    hideKibana7UI();
     hideJiraUI();
     enableFullScreen();
 })();
