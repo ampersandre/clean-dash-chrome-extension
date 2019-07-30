@@ -5,5 +5,6 @@ dashboardModeButton.onclick = function(element) {
     chrome.tabs.executeScript(
         tabs[0].id,
         {file: 'enableDashboardMode.js'});
+    window.close();
   });
 };
