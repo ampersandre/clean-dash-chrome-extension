@@ -1,15 +1,28 @@
-function applyForElement(element, applyFn) {
-    if (element && element[0]) {
-        applyFn(element[0]);
+function applyForElement(el, applyFn) {
+    console.log(el);
+    const element = NodeList.prototype.isPrototypeOf(el) || HTMLCollection.prototype.isPrototypeOf(el) ? el[0] : el;
+    console.log(element);
+    if (element) {
+        applyFn(element);
     }
 }
 
-function hideUI() {
+function hideKibanaUI() {
     applyForElement(document.getElementsByClassName('global-nav'), (e) => e.style.display = 'none');
     applyForElement(document.getElementsByClassName('app-wrapper'), (e) => e.style.left = 0);
     applyForElement(document.getElementsByName('discover'), (e) => e.style.display = 'none');
     applyForElement(document.getElementsByName('discover-search'), (e) => e.style.display = 'none');
+    applyForElement(document.getElementsByName('dashboard'), (e) => e.style.display = 'none');
     applyForElement(document.getElementsByName('dashboard-search'), (e) => e.style.display = 'none');
+}
+
+function hideJiraUI() {
+    applyForElement(document.getElementById('header'), (e) => e.style.display = 'none');
+    applyForElement(document.getElementById('announcement-banner'), (e) => e.style.display = 'none');
+    applyForElement(document.getElementById('ghx-header'), (e) => e.style.display = 'none');
+    applyForElement(document.getElementById('ghx-operations'), (e) => e.style.display = 'none');
+    applyForElement(document.getElementsByClassName('aui-sidebar'), (e) => e.style.display = 'none');
+    applyForElement(document.getElementsByClassName('aui-page-panel'), (e) => e.style['padding-left'] = 0);
 }
 
 function enableFullScreen() {
@@ -24,6 +37,7 @@ function enableFullScreen() {
 }
 
 (function() {
-    hideUI();
+    hideKibanaUI();
+    hideJiraUI();
     enableFullScreen();
 })();

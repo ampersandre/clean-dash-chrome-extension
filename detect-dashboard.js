@@ -3,9 +3,9 @@
 chrome.runtime.onInstalled.addListener(function() {
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
     chrome.declarativeContent.onPageChanged.addRules([{
-      conditions: [new chrome.declarativeContent.PageStateMatcher({
-        css: ['#kibana-body'],
-      })
+      conditions: [
+        new chrome.declarativeContent.PageStateMatcher({ css: ['#kibana-body'] }),
+        new chrome.declarativeContent.PageStateMatcher({ css: ['#jira'] }),
       ],
           actions: [new chrome.declarativeContent.ShowPageAction()]
     }]);
