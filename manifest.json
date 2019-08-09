@@ -1,6 +1,6 @@
 {
     "name": "Clean Dashboard",
-    "version": "1.1",
+    "version": "1.2",
     "description": "Remove the extra UI from dashboards. Icon made by https://www.flaticon.com/authors/smashicons",
     "manifest_version": 2,
     "permissions": ["activeTab"],
